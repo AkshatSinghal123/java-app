@@ -6,7 +6,7 @@ pipeline {
 
         stage("Git Checkout"){
             steps {
-                git branch: 'main', url: 'https://github.com/AkshatSinghal123/java-app'
+                git branch: 'main', url: 'https://github.com/AkshatSinghal123/java-app.git'
             }
         }
 
@@ -20,6 +20,12 @@ pipeline {
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
-        }
-    }
+        }
+
+        stage("Build"){
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+    }
 }
